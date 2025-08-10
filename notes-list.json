@@ -1,0 +1,59 @@
+{
+    "notes": [
+        {
+            "id": "bio-cell-aqa",
+            "title": "GCSE Biology - Cell Structure (AQA)",
+            "description": "Detailed notes on animal and plant cells, microscopy, and cell specialisation.",
+            "keyStage": "KS4",
+            "subject": "Biology",
+            "topic": "Cell Biology",
+            "examBoard": "AQA",
+            "lastUpdated": "2023-09-15",
+            "contentFile": "bio-cell-aqa.json"
+        },
+        {
+            "id": "chem-organic-ocr",
+            "title": "A-Level Chemistry - Organic Synthesis (OCR)",
+            "description": "Complete synthetic routes for aliphatic and aromatic compounds with reaction mechanisms.",
+            "keyStage": "KS5",
+            "subject": "Chemistry",
+            "topic": "Organic Chemistry",
+            "examBoard": "OCR",
+            "lastUpdated": "2023-10-02",
+            "contentFile": "chem-organic-ocr.json"
+        },
+        {
+            "id": "physics-quantum-ib",
+            "title": "IB Physics - Quantum Physics",
+            "description": "Wave-particle duality, Schrödinger's cat, and the uncertainty principle explained.",
+            "keyStage": "IB",
+            "subject": "Physics",
+            "topic": "Quantum Phenomena",
+            "examBoard": "IB",
+            "lastUpdated": "2023-08-20",
+            "contentFile": "physics-quantum-ib.json"
+        },
+        {
+            "id": "maths-algebra-edexcel",
+            "title": "GCSE Maths - Algebra (Edexcel)",
+            "description": "Comprehensive algebra notes covering solving equations, factorising, and algebraic fractions.",
+            "keyStage": "KS4",
+            "subject": "Maths",
+            "topic": "Algebra",
+            "examBoard": "Edexcel",
+            "lastUpdated": "2023-09-28",
+            "contentFile": "maths-algebra-edexcel.json"
+        },
+        {
+            "id": "history-coldwar-aqa",
+            "title": "A-Level History - Cold War (AQA)",
+            "description": "Chronological analysis of Cold War events from 1945-1991 with key historians' interpretations.",
+            "keyStage": "KS5",
+            "subject": "History",
+            "topic": "Cold War",
+            "examBoard": "AQA",
+            "lastUpdated": "2023-10-10",
+            "contentFile": "history-coldwar-aqa.json"
+        }
+    ]
+}

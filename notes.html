@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Notes | EduResources</title>
+    <meta name="description" content="Read comprehensive study notes online for UK qualifications">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #7f8c8d;
+            --white: #ffffff;
+            --border-radius: 6px;
+            --card-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            line-height: 1.5;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 12px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+            margin-right: 8px;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .page-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .page-header p {
+            font-size: 0.85rem;
+        }
+
+        .notes-filters {
+            background-color: var(--white);
+            padding: 12px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 7px 8px;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+        }
+
+        .filter-btn {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 7px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            grid-column: 1 / -1;
+            transition: var(--transition);
+            font-size: 0.85rem;
+        }
+
+        .filter-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .notes-results {
+            margin-bottom: 30px;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .results-header h2 {
+            font-size: 1.2rem;
+        }
+
+        .results-count {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .note-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .note-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-header h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+            flex: 1;
+            line-height: 1.3;
+        }
+
+        .key-stage {
+            background-color: var(--secondary-color);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 10px;
+            flex: 1;
+        }
+
+        .card-body p {
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: var(--dark-gray);
+        }
+
+        .card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .meta-item {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            margin-right: 3px;
+        }
+
+        .card-footer {
+            padding: 0 10px 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+            background: none;
+            padding: 5px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.7rem;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 25px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+        }
+
+        .no-results i {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            margin-bottom: 8px;
+        }
+
+        .no-results h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .no-results p {
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            color: var(--dark-gray);
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 0.7rem;
+            padding: 5px;
+        }
+
+        .nav-item i {
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .nav-item.active {
+            color: var(--secondary-color);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(52, 152, 219, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Notes Viewer Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow: auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .note-content {
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+
+        .note-content h2 {
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--medium-gray);
+            padding-bottom: 0.3rem;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .note-content h3 {
+            color: var(--primary-color);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .note-content p {
+            margin-bottom: 1rem;
+        }
+
+        .note-content ul,
+        .note-content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .note-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .note-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1rem auto;
+            border-radius: var(--border-radius);
+        }
+
+        .note-content .diagram {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .note-content .key-point {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 3px solid var(--secondary-color);
+            padding: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .loading-content {
+            text-align: center;
+            padding: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .notes-filters {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .notes-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+            }
+
+            .page-header {
+                padding: 15px 0;
+            }
+
+            .page-header h1 {
+                font-size: 1.3rem;
+            }
+
+            .page-header p {
+                font-size: 0.8rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .notes-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 8px;
+            }
+
+            .card-header h3 {
+                font-size: 0.8rem;
+            }
+
+            .key-stage {
+                font-size: 0.6rem;
+                padding: 1px 3px;
+            }
+
+            .card-body p {
+                font-size: 0.7rem;
+            }
+
+            .meta-item {
+                font-size: 0.6rem;
+                padding: 1px 3px;
+            }
+
+            .btn-outline {
+                padding: 4px 6px;
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                EduResources
+            </a>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Study Notes</h1>
+            <p>Read comprehensive revision notes online for all UK qualifications</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="notes-filters">
+            <div class="filter-group">
+                <label for="keyStage">Key Stage</label>
+                <select id="keyStage">
+                    <option value="">All Key Stages</option>
+                    <option value="KS3">KS3 (Years 7-9)</option>
+                    <option value="KS4">KS4 (GCSE)</option>
+                    <option value="KS5">KS5 (A-Level)</option>
+                    <option value="IB">IB Diploma</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="subject">Subject</label>
+                <select id="subject">
+                    <option value="">All Subjects</option>
+                    <optgroup label="Sciences">
+                        <option value="Biology">Biology</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Physics">Physics</option>
+                    </optgroup>
+                    <optgroup label="Mathematics">
+                        <option value="Maths">Mathematics</option>
+                        <option value="Further Maths">Further Maths</option>
+                    </optgroup>
+                    <optgroup label="Humanities">
+                        <option value="History">History</option>
+                        <option value="Geography">Geography</option>
+                        <option value="Economics">Economics</option>
+                    </optgroup>
+                    <optgroup label="Languages">
+                        <option value="English">English</option>
+                        <option value="French">French</option>
+                        <option value="Spanish">Spanish</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="topic">Topic</label>
+                <input type="text" id="topic" placeholder="Cells, Algebra, WW2, etc.">
+            </div>
+
+            <div class="filter-group">
+                <label for="examBoard">Exam Board</label>
+                <select id="examBoard">
+                    <option value="">All Boards</option>
+                    <option value="AQA">AQA</option>
+                    <option value="Edexcel">Edexcel</option>
+                    <option value="OCR">OCR</option>
+                    <option value="WJEC">WJEC</option>
+                    <option value="IB">International Baccalaureate</option>
+                </select>
+            </div>
+
+            <button class="filter-btn" id="applyFilters">
+                <i class="fas fa-filter"></i> Apply Filters
+            </button>
+        </section>
+
+        <section class="notes-results">
+            <div class="results-header">
+                <h2>Revision Notes</h2>
+                <div class="results-count" id="resultsCount">
+                    <span class="loading-spinner"></span> Loading notes...
+                </div>
+            </div>
+
+            <div class="notes-grid" id="notesGrid">
+                <!-- Cards will be loaded dynamically from notes-list.json -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Notes Viewer Modal -->
+    <div class="modal-overlay" id="notesModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="note-content" id="notesContent">
+                <!-- Note content will be loaded here from individual JSON files -->
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="pastpapers.html" class="nav-item">
+            <i class="fas fa-file-alt"></i>
+            <span>Papers</span>
+        </a>
+        <a href="syllabus.html" class="nav-item">
+            <i class="fas fa-list-alt"></i>
+            <span>Syllabus</span>
+        </a>
+        <a href="notes.html" class="nav-item active">
+            <i class="fas fa-sticky-note"></i>
+            <span>Notes</span>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const notesGrid = document.getElementById('notesGrid');
+            const resultsCount = document.getElementById('resultsCount');
+            const notesModal = document.getElementById('notesModal');
+            const notesContent = document.getElementById('notesContent');
+            const closeModal = document.getElementById('closeModal');
+            let notesList = [];
+            
+            // Close modal when clicking X or outside
+            closeModal.addEventListener('click', () => {
+                notesModal.classList.remove('active');
+            });
+            
+            notesModal.addEventListener('click', (e) => {
+                if (e.target === notesModal) {
+                    notesModal.classList.remove('active');
+                }
+            });
+
+            // Load notes list data
+            function loadNotesList() {
+                fetch('notes-list.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        notesList = data.notes;
+                        renderNotesCards(notesList);
+                        setupFilters();
+                    })
+                    .catch(error => {
+                        console.error('Error loading notes list:', error);
+                        showError();
+                    });
+            }
+
+            // Render notes cards
+            function renderNotesCards(data) {
+                notesGrid.innerHTML = '';
+                
+                if (!data || data.length === 0) {
+                    showNoResults();
+                    return;
+                }
+
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'note-card';
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <h3>${item.title}</h3>
+                            <span class="key-stage">${getKeyStageLabel(item.keyStage)}</span>
+                        </div>
+                        <div class="card-body">
+                            <p>${item.description}</p>
+                            <div class="card-meta">
+                                ${item.subject ? `<span class="meta-item">${item.subject}</span>` : ''}
+                                ${item.topic ? `<span class="meta-item">${item.topic}</span>` : ''}
+                                ${item.examBoard ? `<span class="meta-item">${item.examBoard}</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-outline view-btn" data-content-file="${item.contentFile}">
+                                <i class="fas fa-eye"></i> Read Notes
+                            </button>
+                        </div>
+                    `;
+                    notesGrid.appendChild(card);
+                });
+
+                // Add event listeners to view buttons
+                document.querySelectorAll('.view-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const contentFile = this.getAttribute('data-content-file');
+                        loadNoteContent(contentFile);
+                    });
+                });
+
+                resultsCount.textContent = `Showing ${data.length} ${data.length === 1 ? 'note' : 'notes'}`;
+            }
+
+            // Load and display note content
+            function loadNoteContent(contentFile) {
+                notesContent.innerHTML = `
+                    <div class="loading-content">
+                        <span class="loading-spinner"></span>
+                        <p>Loading note content...</p>
+                    </div>
+                `;
+                notesModal.classList.add('active');
+
+                fetch(`notes-content/${contentFile}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Note not found');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        notesContent.innerHTML = `
+                            <h2>${data.title}</h2>
+                            <div class="card-meta" style="margin-bottom: 1rem;">
+                                <span class="meta-item">${data.subject}</span>
+                                <span class="meta-item">${data.keyStage}</span>
+                                ${data.examBoard ? `<span class="meta-item">${data.examBoard}</span>` : ''}
+                            </div>
+                            ${data.content}
+                        `;
+                    })
+                    .catch(error => {
+                        console.error('Error loading note content:', error);
+                        notesContent.innerHTML = `
+                            <div style="text-align: center; padding: 40px;">
+                                <i class="fas fa-exclamation-triangle" style="color: #e74c3c; font-size: 2rem;"></i>
+                                <h3>Note not available</h3>
+                                <p>Could not load the requested content</p>
+                            </div>
+                        `;
+                    });
+            }
+
+            // Setup filters
+            function setupFilters() {
+                const applyFiltersBtn = document.getElementById('applyFilters');
+                const topicInput = document.getElementById('topic');
+                const keyStageSelect = document.getElementById('keyStage');
+                const subjectSelect = document.getElementById('subject');
+                const examBoardSelect = document.getElementById('examBoard');
+
+                // Apply filters when button is clicked or when dropdowns change
+                [applyFiltersBtn, topicInput, keyStageSelect, subjectSelect, examBoardSelect].forEach(element => {
+                    element.addEventListener('change', applyFilters);
+                    element.addEventListener('input', applyFilters);
+                });
+            }
+
+            // Apply filters
+            function applyFilters() {
+                const keyStage = document.getElementById('keyStage').value;
+                const subject = document.getElementById('subject').value;
+                const examBoard = document.getElementById('examBoard').value;
+                const topic = document.getElementById('topic').value.toLowerCase();
+
+                const filteredData = notesList.filter(item => {
+                    // Key Stage filter
+                    const matchesKeyStage = !keyStage || 
+                                         (item.keyStage && item.keyStage === keyStage) || 
+                                         (keyStage === 'IB' && item.examBoard && item.examBoard.includes('IB'));
+                    
+                    // Subject filter
+                    const matchesSubject = !subject || 
+                                        (item.subject && (
+                                            item.subject.toLowerCase().includes(subject.toLowerCase()) ||
+                                            subject.toLowerCase().includes(item.subject.toLowerCase())
+                                        ));
+                    
+                    // Exam Board filter
+                    const matchesExamBoard = !examBoard || 
+                                          (item.examBoard && (
+                                              item.examBoard.toLowerCase().includes(examBoard.toLowerCase()) ||
+                                              examBoard.toLowerCase().includes(item.examBoard.toLowerCase())
+                                          ));
+                    
+                    // Topic filter
+                    const matchesTopic = !topic || 
+                                      (item.topic && item.topic.toLowerCase().includes(topic)) || 
+                                      (item.title && item.title.toLowerCase().includes(topic)) ||
+                                      (item.description && item.description.toLowerCase().includes(topic));
+
+                    return matchesKeyStage && matchesSubject && matchesExamBoard && matchesTopic;
+                });
+
+                renderNotesCards(filteredData);
+            }
+
+            function getKeyStageLabel(keyStage) {
+                if (!keyStage) return 'N/A';
+                
+                const labels = {
+                    'KS3': 'KS3',
+                    'KS4': 'GCSE',
+                    'KS5': 'A-Level',
+                    'IB': 'IB'
+                };
+                return labels[keyStage] || keyStage;
+            }
+
+            function showNoResults() {
+                notesGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>No notes found</h3>
+                        <p>Try adjusting your search filters</p>
+                        <button onclick="resetFilters()" class="btn-outline">
+                            <i class="fas fa-redo"></i> Reset Filters
+                        </button>
+                    </div>
+                `;
+                resultsCount.textContent = '0 notes';
+            }
+
+            function showError() {
+                notesGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Error loading notes</h3>
+                        <p>Please try again later</p>
+                    </div>
+                `;
+                resultsCount.innerHTML = 'Error loading data';
+            }
+
+            window.resetFilters = function() {
+                document.getElementById('keyStage').value = '';
+                document.getElementById('subject').value = '';
+                document.getElementById('examBoard').value = '';
+                document.getElementById('topic').value = '';
+                renderNotesCards(notesList);
+            };
+
+            // Initialize
+            loadNotesList();
+        });
+    </script>
+</body>
+</html>

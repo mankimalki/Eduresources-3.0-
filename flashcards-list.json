@@ -1,0 +1,14 @@
+{
+  "flashcardSets": [
+    {
+      "title": "GCSE Biology - Cell Biology",
+      "description": "Key terms and concepts for cell biology revision",
+      "subject": "Biology",
+      "keyStage": "KS4",
+      "examBoard": "AQA",
+      "topic": "Cells",
+      "contentFile": "gcse-biology-cells.json",
+      "cardCount": 12
+    }
+  ]
+}

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Educational Books | EduResources</title>
+    <meta name="description" content="Download free textbooks, revision guides and workbooks for GCSE, A-Level, SATs and 11 Plus exams">
+    
+    <!-- Your existing fonts and icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Your exact theme styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #7f8c8d;
+            --white: #ffffff;
+            --app-padding: 16px;
+            --border-radius: 8px;
+            --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--light-gray);
+            min-height: 100vh;
+            padding-bottom: 72px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--app-padding);
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-right: auto;
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        .donate-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            animation: pulse 2s infinite;
+            font-size: 0.9rem;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 30px 0;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        /* Modified books section (no images) */
+        .filters-container {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .filter-group {
+            margin-bottom: 0;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Updated book card without image */
+        .book-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .book-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .book-author {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .book-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .meta-tag {
+            background-color: var(--light-gray);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .book-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            cursor: pointer;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+            background: none;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .no-results i {
+            font-size: 2rem;
+            color: var(--dark-gray);
+            margin-bottom: 16px;
+        }
+
+        .no-results h3 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .no-results p {
+            color: var(--dark-gray);
+            margin-bottom: 16px;
+        }
+
+        /* Your existing footer and bottom nav styles */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            opacity: 0.9;
+            display: block;
+            padding: 0.2rem 0;
+        }
+
+        .footer-column a:hover {
+            color: var(--secondary-color);
+            opacity: 1;
+            padding-left: 0.3rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.8;
+            padding: 1rem;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.8rem 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+        }
+
+        .nav-item i {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .nav-item.active {
+            color: var(--secondary-color);
+        }
+
+        @media (min-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .bottom-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .filters-container {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                EduResources
+            </a>
+
+            <button class="donate-btn" id="donateBtn">
+                <i class="fas fa-heart"></i> Donate
+            </button>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-book"></i> Free Educational Books</h1>
+            <p>Download textbooks, revision guides and workbooks for all major UK exams</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="filters-container">
+            <div class="filter-group">
+                <label for="level">Education Level</label>
+                <select id="level">
+                    <option value="">All Levels</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="subject">Subject</label>
+                <select id="subject">
+                    <option value="">All Subjects</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="publisher">Publisher</label>
+                <select id="publisher">
+                    <option value="">All Publishers</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="search">Search</label>
+                <input type="text" id="search" placeholder="Search by title, author or ISBN...">
+            </div>
+
+            <button class="filter-btn" id="applyFilters">
+                <i class="fas fa-filter"></i> Apply Filters
+            </button>
+        </div>
+
+        <div class="books-grid" id="booksGrid">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i> Loading books...
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Qualifications</h3>
+                    <ul>
+                        <li><a href="gcse.html">GCSE</a></li>
+                        <li><a href="alevels.html">A-Levels</a></li>
+                        <li><a href="igcse.html">IGCSE</a></li>
+                        <li><a href="sats.html">SATs</a></li>
+                        <li><a href="11plus.html">11 Plus</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="pastpapers.html">Past Papers</a></li>
+                        <li><a href="books.html">Free Books</a></li>
+                        <li><a href="syllabus.html">Syllabus</a></li>
+                        <li><a href="quizzes.html">Quizzes</a></li>
+                        <li><a href="notes.html">Study Notes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="tutoring.html">Online Tutoring</a></li>
+                        <li><a href="tips.html">Exam Tips</a></li>
+                        <li><a href="blog.html">Study Blog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="about.html">Donate</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 EduResources. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="pastpapers.html" class="nav-item">
+            <i class="fas fa-file-alt"></i>
+            <span>Papers</span>
+        </a>
+        <a href="books.html" class="nav-item active">
+            <i class="fas fa-book"></i>
+            <span>Books</span>
+        </a>
+        <a href="resources.html" class="nav-item">
+            <i class="fas fa-list-alt"></i>
+            <span>Resources</span>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const booksGrid = document.getElementById('booksGrid');
+            const levelFilter = document.getElementById('level');
+            const subjectFilter = document.getElementById('subject');
+            const publisherFilter = document.getElementById('publisher');
+            const searchInput = document.getElementById('search');
+            const applyFiltersBtn = document.getElementById('applyFilters');
+            
+            let booksData = [];
+
+            // Load books data from JSON
+            async function loadBooksData() {
+                try {
+                    // Show loading state
+                    booksGrid.innerHTML = `
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i> Loading books...
+                        </div>
+                    `;
+
+                    // Try to fetch from JSON file
+                    const response = await fetch('books.json');
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (!data.books || !Array.isArray(data.books)) {
+                        throw new Error('Invalid data format');
+                    }
+                    
+                    booksData = data.books;
+                    renderBooks(booksData);
+                    setupFilters();
+                    
+                } catch (error) {
+                    console.error('Error loading books:', error);
+                    // Fallback to sample data if JSON fails
+                    booksData = getSampleData();
+                    renderBooks(booksData);
+                    setupFilters();
+                    showMessage('Using sample data - some features may be limited', 'info');
+                }
+            }
+
+            // Sample data fallback
+            function getSampleData() {
+                return [
+                    {
+                        "title": "GCSE Mathematics Higher Revision Guide",
+                        "author": "CGP Books",
+                        "publisher": "CGP",
+                        "grade": "GCSE",
+                        "subject": "Mathematics",
+                        "isbn": "9781782944041",
+                        "viewLink": "#",
+                        "downloadLink": "#"
+                    },
+                    {
+                        "title": "A-Level Biology Complete Revision",
+                        "author": "Oxford University Press",
+                        "publisher": "Oxford",
+                        "grade": "A-Level",
+                        "subject": "Biology",
+                        "isbn": "9780198355944",
+                        "viewLink": "#",
+                        "downloadLink": "#"
+                    }
+                ];
+            }
+
+            // Render books to the grid
+            function renderBooks(data) {
+                booksGrid.innerHTML = '';
+
+                if (!data || data.length === 0) {
+                    showNoResults();
+                    return;
+                }
+
+                data.forEach(book => {
+                    const card = document.createElement('div');
+                    card.className = 'book-card';
+                    card.innerHTML = `
+                        <div class="book-title">${book.title}</div>
+                        <div class="book-author">by ${book.author || 'Unknown Author'}</div>
+                        <div class="book-meta">
+                            <span class="meta-tag">${book.grade || 'All Levels'}</span>
+                            <span class="meta-tag">${book.subject || 'General'}</span>
+                            <span class="meta-tag">${book.publisher || 'Various'}</span>
+                            ${book.isbn ? `<span class="meta-tag">ISBN: ${book.isbn}</span>` : ''}
+                        </div>
+                        <div class="book-actions">
+                            <a href="${book.viewLink || '#'}" class="btn btn-outline">
+                                <i class="fas fa-eye"></i> Preview
+                            </a>
+                            <a href="${book.downloadLink || '#'}" class="btn btn-primary" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    `;
+                    booksGrid.appendChild(card);
+                });
+            }
+
+            // Setup filters
+            function setupFilters() {
+                // Get unique values from books data
+                const levels = [...new Set(booksData.map(book => book.grade).filter(Boolean))];
+                const subjects = [...new Set(booksData.map(book => book.subject).filter(Boolean))];
+                const publishers = [...new Set(booksData.map(book => book.publisher).filter(Boolean))];
+                
+                // Add level options
+                levels.forEach(level => {
+                    const option = document.createElement('option');
+                    option.value = level.toLowerCase();
+                    option.textContent = level;
+                    levelFilter.appendChild(option);
+                });
+                
+                // Add subject options
+                subjects.forEach(subject => {
+                    const option = document.createElement('option');
+                    option.value = subject.toLowerCase();
+                    option.textContent = subject;
+                    subjectFilter.appendChild(option);
+                });
+                
+                // Add publisher options
+                publishers.forEach(publisher => {
+                    const option = document.createElement('option');
+                    option.value = publisher.toLowerCase();
+                    option.textContent = publisher;
+                    publisherFilter.appendChild(option);
+                });
+            }
+
+            // Apply filters when button is clicked
+            function applyFilters() {
+                const level = levelFilter.value.toLowerCase();
+                const subject = subjectFilter.value.toLowerCase();
+                const publisher = publisherFilter.value.toLowerCase();
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                const filteredBooks = booksData.filter(book => {
+                    const matchesLevel = !level || 
+                        (book.grade && book.grade.toLowerCase().includes(level));
+                    const matchesSubject = !subject || 
+                        (book.subject && book.subject.toLowerCase().includes(subject));
+                    const matchesPublisher = !publisher || 
+                        (book.publisher && book.publisher.toLowerCase().includes(publisher));
+                    const matchesSearch = !searchTerm ||
+                        (book.title && book.title.toLowerCase().includes(searchTerm)) ||
+                        (book.author && book.author.toLowerCase().includes(searchTerm)) ||
+                        (book.isbn && book.isbn.toLowerCase().includes(searchTerm));
+                    
+                    return matchesLevel && matchesSubject && matchesPublisher && matchesSearch;
+                });
+                
+                renderBooks(filteredBooks);
+                
+                if (filteredBooks.length === 0) {
+                    showNoResults();
+                }
+            }
+
+            // Show no results message
+            function showNoResults() {
+                booksGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>No books found</h3>
+                        <p>Try adjusting your search filters</p>
+                        <button onclick="resetFilters()" class="btn btn-primary">
+                            <i class="fas fa-redo"></i> Reset Filters
+                        </button>
+                    </div>
+                `;
+            }
+
+            // Show message to user
+            function showMessage(message, type = 'info') {
+                console.log(`${type}: ${message}`);
+            }
+
+            // Reset all filters
+            window.resetFilters = function() {
+                levelFilter.value = '';
+                subjectFilter.value = '';
+                publisherFilter.value = '';
+                searchInput.value = '';
+                renderBooks(booksData);
+            };
+
+            // Set up event listeners
+            applyFiltersBtn.addEventListener('click', applyFilters);
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') applyFilters();
+            });
+
+            // Initialize
+            loadBooksData();
+        });
+    </script>
+</body>
+</html>
