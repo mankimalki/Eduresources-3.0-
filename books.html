@@ -6,12 +6,10 @@
     <title>Free Educational Books | EduResources</title>
     <meta name="description" content="Download free textbooks, revision guides and workbooks for GCSE, A-Level, SATs and 11 Plus exams">
     
-    <!-- Your existing fonts and icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* Your exact theme styles */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
@@ -30,7 +28,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif; /* Changed from Urbanist to Inter for better cross-browser support */
+            font-family: 'Inter', sans-serif;
         }
 
         body {
@@ -39,7 +37,7 @@
             background-color: var(--light-gray);
             min-height: 100vh;
             padding-bottom: 72px;
-            -webkit-text-size-adjust: 100%; /* Prevent text inflation on mobile */
+            -webkit-text-size-adjust: 100%;
         }
 
         .container {
@@ -47,11 +45,13 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--app-padding);
+            padding-bottom: 60px;
         }
 
+        /* Fixed Header */
         header {
             background-color: var(--white);
-            padding: 15px 0;
+            padding: 12px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
@@ -63,10 +63,11 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            padding: 0 var(--app-padding);
         }
 
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--primary-color);
             text-decoration: none;
@@ -77,7 +78,8 @@
 
         .logo i {
             color: var(--secondary-color);
-            margin-right: 10px;
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
 
         .donate-btn {
@@ -85,14 +87,14 @@
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 8px 15px;
+            padding: 6px 12px;
             cursor: pointer;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 5px;
             animation: pulse 2s infinite;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         @keyframes pulse {
@@ -104,35 +106,36 @@
         .page-header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--white);
-            padding: 30px 0;
-            margin-bottom: 30px;
+            padding: 24px 0;
+            margin-bottom: 24px;
             text-align: center;
         }
 
         .page-header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .page-header p {
             opacity: 0.9;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            max-width: 90%;
+            margin: 0 auto;
         }
 
-        /* Modified books section (no images) */
         .filters-container {
             background-color: var(--white);
-            padding: 20px;
+            padding: 16px;
             border-radius: var(--border-radius);
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             box-shadow: var(--card-shadow);
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
+            gap: 12px;
         }
 
         .filter-group {
@@ -141,26 +144,26 @@
 
         .filter-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .filter-group select,
         .filter-group input {
             width: 100%;
-            padding: 10px;
+            padding: 8px 10px;
             border: 1px solid var(--medium-gray);
             border-radius: var(--border-radius);
-            font-size: 0.9rem;
-            -webkit-appearance: none; /* Fix for Chrome select styling */
+            font-size: 0.85rem;
+            -webkit-appearance: none;
         }
 
         .filter-btn {
             background-color: var(--secondary-color);
             color: var(--white);
             border: none;
-            padding: 12px;
+            padding: 10px;
             border-radius: var(--border-radius);
             font-weight: 600;
             cursor: pointer;
@@ -169,25 +172,24 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .books-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 18px;
         }
 
-        /* Updated book card without image */
         .book-card {
             background-color: var(--white);
             border-radius: var(--border-radius);
-            padding: 20px;
+            padding: 18px;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            min-height: 200px;
+            min-height: 180px;
         }
 
         .book-card:hover {
@@ -196,51 +198,51 @@
         }
 
         .book-title {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: var(--primary-color);
-            word-break: break-word; /* Prevent long words from breaking layout */
+            word-break: break-word;
         }
 
         .book-author {
             color: var(--dark-gray);
-            font-size: 0.9rem;
-            margin-bottom: 12px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
         }
 
         .book-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 6px;
+            margin-bottom: 12px;
         }
 
         .meta-tag {
             background-color: var(--light-gray);
-            padding: 5px 10px;
+            padding: 4px 8px;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--primary-color);
-            white-space: nowrap; /* Prevent tags from breaking */
+            white-space: nowrap;
         }
 
         .book-actions {
             display: flex;
             justify-content: space-between;
             margin-top: auto;
-            gap: 10px;
+            gap: 8px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 8px 12px;
+            padding: 7px 10px;
             border-radius: var(--border-radius);
             font-weight: 600;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             transition: var(--transition);
             cursor: pointer;
             gap: 5px;
@@ -262,47 +264,57 @@
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 16px;
             background-color: var(--white);
             border-radius: var(--border-radius);
             box-shadow: var(--card-shadow);
         }
 
         .no-results i {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--dark-gray);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .no-results h3 {
             color: var(--primary-color);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
         }
 
         .no-results p {
             color: var(--dark-gray);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
         }
 
-        /* Your existing footer and bottom nav styles */
+        /* Optimized Footer */
         footer {
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 2rem 0 1rem;
+            padding: 1.5rem 0 0;
+            position: relative;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--app-padding);
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
             margin-bottom: 1.5rem;
-            padding: 0 1rem;
         }
 
         .footer-column h3 {
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: var(--secondary-color);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             letter-spacing: 0.3px;
         }
@@ -312,14 +324,14 @@
         }
 
         .footer-column li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .footer-column a {
             color: var(--white);
             text-decoration: none;
             transition: var(--transition);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             opacity: 0.9;
             display: block;
             padding: 0.2rem 0;
@@ -328,16 +340,15 @@
         .footer-column a:hover {
             color: var(--secondary-color);
             opacity: 1;
-            padding-left: 0.3rem;
+            padding-left: 0.2rem;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 1rem;
+            padding: 0.8rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             opacity: 0.8;
-            padding: 1rem;
         }
 
         .bottom-nav {
@@ -348,7 +359,7 @@
             background-color: var(--white);
             display: flex;
             justify-content: space-around;
-            padding: 0.8rem 0;
+            padding: 0.6rem 0;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
             z-index: 100;
         }
@@ -359,12 +370,12 @@
             align-items: center;
             text-decoration: none;
             color: var(--dark-gray);
-            font-size: 0.75rem;
-            padding: 0.2rem 0.5rem;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
         }
 
         .nav-item i {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 0.2rem;
         }
 
@@ -374,11 +385,24 @@
 
         @media (min-width: 768px) {
             .page-header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .page-header {
+                padding: 28px 0;
             }
 
             .bottom-nav {
                 display: none;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .donate-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
             }
         }
 
@@ -388,17 +412,17 @@
             }
 
             .page-header h1 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             
-            /* Smaller cards on mobile */
             .books-grid {
                 grid-template-columns: 1fr;
+                gap: 14px;
             }
             
             .book-card {
                 min-height: auto;
-                padding: 15px;
+                padding: 14px;
             }
             
             .book-title {
@@ -406,16 +430,46 @@
             }
             
             .book-author {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
             
             .meta-tag {
-                font-size: 0.75rem;
-                padding: 4px 8px;
+                font-size: 0.7rem;
+                padding: 3px 6px;
             }
             
             .btn {
-                padding: 8px 10px;
+                padding: 6px 8px;
+                font-size: 0.75rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 1.3rem;
+                gap: 8px;
+            }
+
+            .page-header p {
+                font-size: 0.85rem;
+            }
+
+            .filter-group label {
+                font-size: 0.8rem;
+            }
+
+            .filter-group select,
+            .filter-group input {
+                padding: 7px 10px;
                 font-size: 0.8rem;
             }
         }
@@ -423,7 +477,7 @@
 </head>
 <body>
     <header>
-        <div class="container header-container">
+        <div class="header-container">
             <a href="index.html" class="logo">
                 <i class="fas fa-book-open"></i>
                 EduResources
@@ -483,7 +537,7 @@
     </div>
 
     <footer>
-        <div class="container">
+        <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Qualifications</h3>
@@ -565,17 +619,14 @@
             
             let booksData = [];
 
-            // Load books data from JSON
             async function loadBooksData() {
                 try {
-                    // Show loading state
                     booksGrid.innerHTML = `
                         <div class="loading">
                             <i class="fas fa-spinner fa-spin"></i> Loading books...
                         </div>
                     `;
 
-                    // Try to fetch from JSON file
                     const response = await fetch('books.json');
                     
                     if (!response.ok) {
@@ -594,7 +645,6 @@
                     
                 } catch (error) {
                     console.error('Error loading books:', error);
-                    // Fallback to sample data if JSON fails
                     booksData = getSampleData();
                     renderBooks(booksData);
                     setupFilters();
@@ -602,7 +652,6 @@
                 }
             }
 
-            // Sample data fallback
             function getSampleData() {
                 return [
                     {
@@ -628,7 +677,6 @@
                 ];
             }
 
-            // Render books to the grid
             function renderBooks(data) {
                 booksGrid.innerHTML = '';
 
@@ -662,14 +710,11 @@
                 });
             }
 
-            // Setup filters
             function setupFilters() {
-                // Get unique values from books data
                 const levels = [...new Set(booksData.map(book => book.grade).filter(Boolean))];
                 const subjects = [...new Set(booksData.map(book => book.subject).filter(Boolean))];
                 const publishers = [...new Set(booksData.map(book => book.publisher).filter(Boolean))];
                 
-                // Add level options
                 levels.forEach(level => {
                     const option = document.createElement('option');
                     option.value = level.toLowerCase();
@@ -677,7 +722,6 @@
                     levelFilter.appendChild(option);
                 });
                 
-                // Add subject options
                 subjects.forEach(subject => {
                     const option = document.createElement('option');
                     option.value = subject.toLowerCase();
@@ -685,7 +729,6 @@
                     subjectFilter.appendChild(option);
                 });
                 
-                // Add publisher options
                 publishers.forEach(publisher => {
                     const option = document.createElement('option');
                     option.value = publisher.toLowerCase();
@@ -694,7 +737,6 @@
                 });
             }
 
-            // Apply filters when button is clicked
             function applyFilters() {
                 const level = levelFilter.value.toLowerCase();
                 const subject = subjectFilter.value.toLowerCase();
@@ -723,7 +765,6 @@
                 }
             }
 
-            // Show no results message
             function showNoResults() {
                 booksGrid.innerHTML = `
                     <div class="no-results">
@@ -737,12 +778,10 @@
                 `;
             }
 
-            // Show message to user
             function showMessage(message, type = 'info') {
                 console.log(`${type}: ${message}`);
             }
 
-            // Reset all filters
             window.resetFilters = function() {
                 levelFilter.value = '';
                 subjectFilter.value = '';
@@ -751,13 +790,11 @@
                 renderBooks(booksData);
             };
 
-            // Set up event listeners
             applyFiltersBtn.addEventListener('click', applyFilters);
             searchInput.addEventListener('keyup', function(e) {
                 if (e.key === 'Enter') applyFilters();
             });
 
-            // Initialize
             loadBooksData();
         });
     </script>
