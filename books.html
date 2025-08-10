@@ -30,7 +30,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Urbanist', sans-serif;
+            font-family: 'Inter', sans-serif; /* Changed from Urbanist to Inter for better cross-browser support */
         }
 
         body {
@@ -39,6 +39,7 @@
             background-color: var(--light-gray);
             min-height: 100vh;
             padding-bottom: 72px;
+            -webkit-text-size-adjust: 100%; /* Prevent text inflation on mobile */
         }
 
         .container {
@@ -152,6 +153,7 @@
             border: 1px solid var(--medium-gray);
             border-radius: var(--border-radius);
             font-size: 0.9rem;
+            -webkit-appearance: none; /* Fix for Chrome select styling */
         }
 
         .filter-btn {
@@ -198,6 +200,7 @@
             font-weight: 600;
             margin-bottom: 8px;
             color: var(--primary-color);
+            word-break: break-word; /* Prevent long words from breaking layout */
         }
 
         .book-author {
@@ -219,6 +222,7 @@
             border-radius: 4px;
             font-size: 0.8rem;
             color: var(--primary-color);
+            white-space: nowrap; /* Prevent tags from breaking */
         }
 
         .book-actions {
@@ -385,6 +389,34 @@
 
             .page-header h1 {
                 font-size: 1.5rem;
+            }
+            
+            /* Smaller cards on mobile */
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-card {
+                min-height: auto;
+                padding: 15px;
+            }
+            
+            .book-title {
+                font-size: 1rem;
+            }
+            
+            .book-author {
+                font-size: 0.85rem;
+            }
+            
+            .meta-tag {
+                font-size: 0.75rem;
+                padding: 4px 8px;
+            }
+            
+            .btn {
+                padding: 8px 10px;
+                font-size: 0.8rem;
             }
         }
     </style>
