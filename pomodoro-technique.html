@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Title | EduResources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            line-height: 1.6;
+            margin: 0;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+
+        .blog-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .blog-header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .blog-content {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .blog-content h2 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-content h3 {
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.8rem 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 0.75rem;
+        }
+
+        .nav-item i {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .nav-item.active {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .blog-header h1 {
+                font-size: 1.6rem;
+            }
+            .blog-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                EduResources
+            </a>
+            <nav>
+                <a href="blog.html" style="color: var(--secondary-color);">Back to Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="blog-header">
+        <div class="container">
+            <h1>The Pomodoro Technique: A Student's Secret Weapon for Focused Study Sessions</h1>
+            <div class="blog-meta">
+                <span><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+                <span><i class="far fa-clock"></i> 8 min read</span>
+                <span><i class="far fa-user"></i> By Sarah Johnson</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <article class="blog-content">
+            <h2>What is the Pomodoro Technique?</h2>
+            <p>The Pomodoro Technique is a simple yet powerful time management method developed by Francesco Cirillo in the late 1980s. Named after the tomato-shaped kitchen timer he used (pomodoro means "tomato" in Italian), this technique breaks work into focused intervals (typically 25 minutes) followed by short breaks.</p>
+            
+            <div class="tip-box">
+                <strong>Why it works for students:</strong>
+                <ul>
+                    <li>Combats procrastination</li>
+                    <li>Maintains mental freshness</li>
+                    <li>Makes study sessions more manageable</li>
+                </ul>
+            </div>
+
+            <h2>How to Use the Pomodoro Technique</h2>
+            <p>Follow these 5 simple steps:</p>
+            
+            <div class="step-card">
+                <h3><span class="step-number">1</span> Choose a task</h3>
+                <p>Be specific: "Read Chapter 3" not just "Study biology"</p>
+            </div>
+            
+            <div class="step-card">
+                <h3><span class="step-number">2</span> Set a timer for 25 minutes</h3>
+                <p>This is one "Pomodoro" session. Eliminate all distractions (phone on silent, notifications off)</p>
+            </div>
+            
+            <div class="step-card">
+                <h3><span class="step-number">3</span> Work until the timer rings</h3>
+                <p>If distracted, jot down the distraction and refocus</p>
+            </div>
+            
+            <div class="step-card">
+                <h3><span class="step-number">4</span> Take a 5-minute break</h3>
+                <p>Stand up, stretch, hydrate. Avoid screens during breaks</p>
+            </div>
+            
+            <div class="step-card">
+                <h3><span class="step-number">5</span> Repeat & take longer breaks</h3>
+                <p>After 4 Pomodoros, take a 15-30 minute break</p>
+            </div>
+
+            <h2>Science Behind the Pomodoro Method</h2>
+            <p>Research shows why this works:</p>
+            <ul>
+                <li><strong>Attention Span:</strong> Most people can only focus intensely for 20-30 minutes</li>
+                <li><strong>Memory Consolidation:</strong> Short breaks help your brain process information</li>
+                <li><strong>Motivation:</strong> Small wins keep you engaged</li>
+            </ul>
+            
+            <div class="tip-box">
+                <strong>Study Tip:</strong> Use your 5-minute breaks to quickly recall what you just learned - this boosts retention by up to 20%!
+            </div>
+
+            <h2>Customizing Pomodoro for Different Study Tasks</h2>
+            <div class="table-responsive">
+                <table>
+                    <tr>
+                        <th>Task Type</th>
+                        <th>Recommended Time</th>
+                        <th>Break</th>
+                    </tr>
+                    <tr>
+                        <td>Reading dense material</td>
+                        <td>15-20 min</td>
+                        <td>5 min</td>
+                    </tr>
+                    <tr>
+                        <td>Problem solving (math, coding)</td>
+                        <td>30-40 min</td>
+                        <td>10 min</td>
+                    </tr>
+                    <tr>
+                        <td>Memorization</td>
+                        <td>25 min study + 5 min recall</td>
+                        <td>5 min</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <strong>Pro Tip:</strong> Adjust times based on your personal focus span. Some students thrive with 50/10 intervals!
+            </div>
+
+            <h2>Common Mistakes to Avoid</h2>
+            <ul>
+                <li><strong>Planning vague tasks</strong> → Be specific ("Do 10 calculus problems")</li>
+                <li><strong>Skipping breaks</strong> → Your brain needs recovery time</li>
+                <li><strong>Using breaks poorly</strong> → Scrolling social media doesn't count as a true break</li>
+                <li><strong>Being too rigid</strong> → If you're in a flow state, it's okay to extend a session</li>
+            </ul>
+
+            <h2>Top Pomodoro Apps for Students</h2>
+            <div class="tools-list">
+                <div class="tool-card">
+                    <h3>Forest</h3>
+                    <p>Gamifies focus with virtual trees</p>
+                </div>
+                <div class="tool-card">
+                    <h3>Focus Keeper</h3>
+                    <p>Simple, clean interface</p>
+                </div>
+                <div class="tool-card">
+                    <h3>PomoDone</h3>
+                    <p>Integrates with task managers</p>
+                </div>
+                <div class="tool-card">
+                    <h3>Marinara Timer</h3>
+                    <p>Web-based, no download needed</p>
+                </div>
+            </div>
+            <p><em>Bonus:</em> Your phone's basic timer works perfectly fine too!</p>
+
+            <div class="conclusion-box">
+                <h2>Final Thoughts</h2>
+                <p>The Pomodoro Technique transforms studying from a marathon into a series of manageable sprints. By working with your brain's natural rhythms rather than against them, you'll:</p>
+                <ul>
+                    <li>Retain information better</li>
+                    <li>Avoid burnout</li>
+                    <li>Get more done in less time</li>
+                </ul>
+                <p><strong>Try it today:</strong> Start with just 2-3 Pomodoros in your next study session. You'll be amazed at how much more focused you feel!</p>
+                <blockquote>"The Pomodoro Technique helped me go from C's to A's by making study sessions actually productive." <cite>- James, A-Level Student</cite></blockquote>
+            </div>
+
+            <div class="social-sharing">
+                <p>Found this helpful? Share with friends!</p>
+
+                </a>
+            </div>
+        </article>
+    </div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Qualifications</h3>
+                <ul>
+                    <li><a href="gcse.html">GCSE</a></li>
+                    <li><a href="alevels.html">A-Levels</a></li>
+                    <li><a href="igcse.html">IGCSE</a></li>
+                    <li><a href="sats.html">SATs</a></li>
+                    <li><a href="11plus.html">11 Plus</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="pastpapers.html">Past Papers</a></li>
+                    <li><a href="books.html">Free Books</a></li>
+                    <li><a href="syllabus.html">Syllabus</a></li>
+                    <li><a href="quizzes.html">Quizzes</a></li>
+                    <li><a href="notes.html">Study Notes</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="tutoring.html">Online Tutoring</a></li>
+                    <li><a href="tips.html">Exam Tips</a></li>
+                    <li><a href="blog.html">Study Blog</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 EduResources. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 2rem 0 1rem;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-column h3 {
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-column a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+        display: block;
+        padding: 0.2rem 0;
+        opacity: 0.9;
+    }
+
+    .footer-column a:hover {
+        color: var(--secondary-color);
+        padding-left: 0.3rem;
+        opacity: 1;
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 0.8rem;
+        opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+        .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .footer-column {
+            margin-bottom: 1rem;
+        }
+    }
+</style>
+
+<nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+    <a href="pastpapers.html" class="nav-item">
+        <i class="fas fa-file-alt"></i>
+        <span>Papers</span>
+    </a>
+    <a href="resources.html" class="nav-item">
+        <i class="fas fa-book"></i>
+        <span>Resources</span>
+    </a>
+    <a href="blog.html" class="nav-item active">
+        <i class="fas fa-blog"></i>
+        <span>Blog</span>
+    </a>
+</nav>
+
+</style>
+</body>
+</html>
